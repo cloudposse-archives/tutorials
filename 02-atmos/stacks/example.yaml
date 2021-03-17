@@ -1,0 +1,26 @@
+import: []
+vars: {}
+
+components:
+  terraform:
+    fetch-location:
+      vars: {}
+
+    fetch-weather:
+      vars:
+        api_key: 2a820d40d573758aa714641fc331e897
+
+    output-results:
+      vars:
+        print_users_weather_enabled: true
+
+  helmfile:
+    vars: {}
+
+workflows:
+  deploy-all:
+    description: Deploy terraform projects in order
+    steps:
+      - job: terraform deploy fetch-location
+      - job: terraform deploy fetch-weather
+      - job: terraform deploy output-results
