@@ -1,6 +1,12 @@
 import: []
 vars: {}
 
+terraform:
+  vars: {}
+
+helmfile:
+  vars: {}
+
 components:
   terraform:
     fetch-location:
@@ -14,8 +20,7 @@ components:
       vars:
         print_users_weather_enabled: true
 
-  helmfile:
-    vars: {}
+  helmfile: {}
 
 workflows:
   deploy-all:
