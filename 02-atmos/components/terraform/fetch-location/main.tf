@@ -1,13 +1,19 @@
 
-# Invoke an our fetch_location.sh external program to get information on the
-# client's IP Address.
-data "external" "fetch_location" {
-  program = ["bash", "${path.root}/fetch_location.sh"]
+# Invoke an the ipapi to get information on the client's IP Address.
+data "http" "fetch_location" {
+  url = "https://ipapi.co/json/"
+  request_headers = {
+    Accept = "application/json"
+  }
 }
 
-# Locals for building the outputs
 locals {
-  location_map = data.external.fetch_location.result
+  location_response = jsondecode(data.http.fetch_location.body)
+  location_map = {
+    city    = local.location_response["city"],
+    region  = local.location_response["region_code"],
+    country = local.location_response["country"],
+  }
   location_str = "${local.location_map.city}, ${local.location_map.region}, ${local.location_map.country}"
 }
 
