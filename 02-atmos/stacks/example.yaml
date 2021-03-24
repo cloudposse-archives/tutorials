@@ -13,9 +13,7 @@ components:
       vars: {}
 
     fetch-weather:
-      vars:
-        # Generally, we do not recommend committing secrets to the config. This is for demo purposes.
-        api_key: 2a820d40d573758aa714641fc331e897
+      vars: {}
 
     output-results:
       vars:

@@ -24,8 +24,8 @@ locals {
   users_location = data.terraform_remote_state.location.outputs.users_location
 
   weather_data        = data.terraform_remote_state.weather.outputs.weather_data
-  weather_temp        = local.weather_data.main.temp
-  weather_description = local.weather_data.weather[0].description
+  weather_temp        = local.weather_data.the_temp
+  weather_description = local.weather_data.weather_state_name
 }
 
 data "template_file" "weather_report" {

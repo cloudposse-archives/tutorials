@@ -1,16 +1,7 @@
-variable "api_key" {
+variable "date" {
+  default     = null
   type        = string
-  description = "The API Key of for the openweathermap.org API"
-  sensitive   = true
-}
-
-variable "unit_of_measurement" {
-  default     = "imperial"
-  type        = string
-  description = <<-EOT
-  The unit of measurement to display the temperature in.
-  Valid values are `standard`, `metric`, or `imperial`
-  EOT
+  description = "The date to retrieve weather data for."
 }
 
 data "terraform_remote_state" "location" {
@@ -24,24 +15,41 @@ data "terraform_remote_state" "location" {
 locals {
   users_location_map = data.terraform_remote_state.location.outputs.users_location_map
 
-  city    = local.users_location_map.city
-  region  = local.users_location_map.region
-  country = local.users_location_map.country
+  lat = local.users_location_map.lat
+  lon = local.users_location_map.lon
 
-  url   = "https://api.openweathermap.org/data/2.5/weather"
-  query = "${local.city},${local.region},${local.country}"
+  location_url = "https://www.metaweather.com/api/location/search/?lattlong=${local.lat},${local.lon}"
 
-  weather_data = jsondecode(data.http.fetch_weather.body)
+  location_id      = local.location_data[0].woeid
+  weather_base_url = "https://www.metaweather.com/api/location"
+  weather_url      = var.date != null ? "${local.weather_base_url}/${local.location_id}/${var.date}" : "${local.weather_base_url}/${local.location_id}/"
+
+  location_data     = jsondecode(data.http.fetch_location.body)
+  full_weather_data = jsondecode(data.http.fetch_weather.body)
+
+  selected_weather_data = var.date != null ? local.full_weather_data[0] : local.full_weather_data.consolidated_weather[0]
 }
 
-data "http" "fetch_weather" {
-  url = "${local.url}?q=${local.query}&appid=${var.api_key}&units=${var.unit_of_measurement}"
+data "http" "fetch_location" {
+  url = local.location_url
 
   request_headers = {
     Accept = "application/json"
   }
 }
 
+data "http" "fetch_weather" {
+  url = local.weather_url
+
+  request_headers = {
+    Accept = "application/json"
+  }
+}
+
+output "location_data" {
+  value = local.location_data
+}
+
 output "weather_data" {
-  value = local.weather_data
+  value = local.selected_weather_data
 }
