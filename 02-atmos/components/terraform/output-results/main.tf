@@ -28,29 +28,24 @@ locals {
   weather_description = local.weather_data.weather[0].description
 }
 
+data "template_file" "weather_report" {
+  template = file("${path.root}/weather-report.tpl")
+  vars = {
+    users_location      = local.users_location
+    weather_temp        = local.weather_temp
+    weather_description = local.weather_description
+  }
+}
+
 resource "null_resource" "print" {
   count = var.print_users_weather_enabled ? 1 : 0
 
   triggers = {
-    "temp"        = local.weather_temp
-    "description" = local.weather_description
+    weather_report = data.template_file.weather_report.rendered
   }
 
   provisioner "local-exec" {
-    command = <<-EOT
-    printf "
-
-
-    === Your Weather Report ===
-    ============================
-    Location: ${local.users_location}
-    Temperature: ${local.weather_temp}°
-    Weather: ${local.weather_description}
-    ============================
-
-
-    "
-    EOT
+    command = "echo '${data.template_file.weather_report.rendered}'"
   }
 }
 
@@ -60,4 +55,8 @@ output "weather_temp" {
 
 output "weather_description" {
   value = local.weather_description
+}
+
+output "weather_report" {
+  value = data.template_file.weather_report.rendered
 }
