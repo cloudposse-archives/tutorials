@@ -23,5 +23,4 @@ run:
 				--volume "$$HOME":/localhost \
 				--volume "$$PWD"/stacks:/stacks \
 				--volume "$$PWD"/components:/components \
-				cloudposse/atmos:latest \
-				--login;
+				cloudposse/atmos:latest;

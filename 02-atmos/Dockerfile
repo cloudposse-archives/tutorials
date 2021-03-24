@@ -1,4 +1,4 @@
-ARG VERSION=0.141.6
+ARG VERSION=latest
 ARG OS=alpine
 ARG CLI_NAME=atmos
 
