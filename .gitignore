@@ -19,6 +19,7 @@ aws-assumed-role/
 **/*.helmfile.vars.yaml
 **/vendir.lock.yml
 **/.terraform.lock.hcl
+**/backend.tf.json
 
 # Module directory
 # Note that the leading "**/" appears necessary for Docker even if not for Git
