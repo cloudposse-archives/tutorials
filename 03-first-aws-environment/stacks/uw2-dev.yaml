@@ -1,0 +1,11 @@
+import:
+  - globals
+  - uw2-globals
+
+vars:
+  stage: dev
+
+components:
+  terraform:
+    static-site:
+      vars: {}
