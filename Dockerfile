@@ -29,7 +29,6 @@ RUN apt-get install -y atmos
 
 # Geodesic message of the Day
 ENV MOTD_URL=""
-COPY ./MOTD.txt /etc/motd
 
 ENV AWS_VAULT_BACKEND=file
 
@@ -39,6 +38,7 @@ ENV DOCKER_TAG="latest"
 # Geodesic banner
 ENV BANNER="Tutorials"
 
+COPY rootfs/ /
 COPY ./ /tutorials
 
 WORKDIR /
