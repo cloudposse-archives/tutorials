@@ -1,6 +1,6 @@
 import:
-  - globals
-  - uw2-globals
+  - catalog/globals
+  - catalog/uw2-globals
 
 vars:
   stage: dev
