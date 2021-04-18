@@ -1,7 +1,7 @@
 vars:
   namespace: acme
 terraform:
-  backend_type: s3 # s3, remote, vault, etc.
+  backend_type: s3
   backend:
     s3:
       encrypt: true
@@ -9,4 +9,4 @@ terraform:
       key: "terraform.tfstate"
       dynamodb_table: "acme-uw2-tfstate-TODO-lock"
       acl: "bucket-owner-full-control"
-      region: "us-west-2"
+      region: "us-east-2"

@@ -1,9 +1,8 @@
 import:
   - catalog/globals
-  - catalog/uw2-globals
 vars:
-  region: us-west-2
-  environment: uw2
+  region: us-east-2
+  environment: ue2
 components:
   terraform:
     tfstate-backend:

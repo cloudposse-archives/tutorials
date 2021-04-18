@@ -11,7 +11,7 @@ PROD_RAND=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 12 | head -n 1)
 # Updates our tfstate-backend's name to be unique
 yq eval --inplace \
     ".components.terraform.tfstate-backend.vars.name = \"tfstate-$RAND\"" \
-    stacks/uw2-root.yaml
+    stacks/ue2-root.yaml
 
 # Updates our static backend config with unique names
 yq eval --inplace \
