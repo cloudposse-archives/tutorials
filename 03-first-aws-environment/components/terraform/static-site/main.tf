@@ -13,7 +13,7 @@ resource "aws_s3_bucket_object" "site_index" {
   key          = "index.html"
   content_type = "text/html"
 
-  content      = <<-EOT
+  content = <<-EOT
   <h1>Hello World!</h1>
   <p>This is ${var.stage}!</p>
   EOT
