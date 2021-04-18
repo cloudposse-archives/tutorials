@@ -25,7 +25,9 @@ RUN apt-get update && apt-get install -y -u terraform-0.14
 RUN update-alternatives --set terraform /usr/share/terraform/0.14/bin/terraform
 
 # Install Atmos
-RUN apt-get install -y atmos
+RUN apt-get install -y --allow-downgrades \
+    atmos \
+    vendir
 
 # Geodesic message of the Day
 ENV MOTD_URL=""
