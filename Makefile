@@ -4,6 +4,7 @@ export DOCKER_ORG ?= cloudposse
 export DOCKER_IMAGE ?= $(DOCKER_ORG)/tutorials
 export DOCKER_TAG ?= latest
 export DOCKER_IMAGE_NAME ?= $(DOCKER_IMAGE):$(DOCKER_TAG)
+export CONTAINER_NAME ?= tuts
 
 # List of targets the `readme` target should call before generating the readme
 export README_DEPS ?= docs/targets.md
@@ -27,4 +28,5 @@ run:
 				--rm \
 				--volume "$$HOME":/localhost \
 				--volume "$$PWD":/tutorials \
+				--name $(CONTAINER_NAME) \
 				cloudposse/tutorials:latest;
