@@ -4,7 +4,8 @@
 Welcome to the SweetOps tutorials toolbox!
 
 This Geodesic toolbox is an interactive way to work through the various tutorials from the SweetOps documentation available at https://docs.cloudposse.com/tutorials.
+
 It includes all of the code from our tutorials repository mounted to `/tutorials` which you can view at https://github.com/cloudposse/tutorials.
+
 Please open a GitHub issue if you run into any problems!
 =================================================
-
