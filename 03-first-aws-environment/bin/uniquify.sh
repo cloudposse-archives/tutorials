@@ -5,8 +5,8 @@
 # our terraform applies. This scripts uniquifies all bucket names in the project.
 
 # Build random value
-RAND=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 12 | head -n 1)
-PROD_RAND=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 12 | head -n 1)
+RAND=$(golang-petname)
+PROD_RAND=$(golang-petname)
 
 # Updates our tfstate-backend's name to be unique
 yq eval --inplace \
