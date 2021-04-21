@@ -1,0 +1,10 @@
+import:
+  - catalog/globals
+  - catalog/uw2-globals
+vars:
+  stage: prod
+components:
+  terraform:
+    static-site:
+      vars:
+        attributes: [TODO]

@@ -1,0 +1,12 @@
+vars:
+  namespace: acme
+terraform:
+  backend_type: s3
+  backend:
+    s3:
+      encrypt: true
+      bucket: "acme-ue2-tfstate-TODO"
+      key: "terraform.tfstate"
+      dynamodb_table: "acme-ue2-tfstate-lock-TODO"
+      acl: "bucket-owner-full-control"
+      region: "us-east-2"
