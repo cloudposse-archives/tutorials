@@ -16,11 +16,11 @@ yq eval --inplace \
 
 # Updates our static backend config with unique names
 yq eval --inplace \
-    ".terraform.backend.s3.bucket = \"acme-uw2-tfstate-$RANDOM_PET\"" \
+    ".terraform.backend.s3.bucket = \"acme-ue2-tfstate-$RANDOM_PET\"" \
     stacks/catalog/globals.yaml
 
 yq eval --inplace \
-    ".terraform.backend.s3.dynamodb_table = \"acme-uw2-tfstate-lock-$RANDOM_PET\"" \
+    ".terraform.backend.s3.dynamodb_table = \"acme-ue2-tfstate-lock-$RANDOM_PET\"" \
     stacks/catalog/globals.yaml
 
 # Updates our dev + prod static-site component vars to ensure we're creating unique names
