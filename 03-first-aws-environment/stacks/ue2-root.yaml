@@ -6,6 +6,9 @@ vars:
 components:
   terraform:
     tfstate-backend:
+      backend:
+        s3:
+          workspace_key_prefix: "tfstate-backend"
       vars:
         name: tfstate
         attributes: [TODO]
