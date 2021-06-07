@@ -1,3 +1,4 @@
+
 # Things that could be checked into Git but need not be in the Docker image
 .git
 .editorconfig
@@ -11,6 +12,7 @@ aws-assumed-role/
 
 # Compiled and auto-generated files
 **/nohup.out
+**/.terraform/*
 **/*.tfstate
 **/*.tfstate.*
 **/planfile
@@ -21,7 +23,6 @@ aws-assumed-role/
 **/*.terraform.tfvars.json
 **/*.terraform.auto.tfvars.json
 **/*.helmfile.vars.yaml
-**/vendir.lock.yml
 
 # Module directory
 **/.terraform/
@@ -32,7 +33,6 @@ aws-assumed-role/
 # Draft or auto-saved version
 # Note that the leading "**/" appears necessary for Docker even if not for Git
 **/*.draft.*
-**/*.draft
 **/*.orig
 **/*.bak
 **/*~
