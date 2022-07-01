@@ -9,7 +9,7 @@ export CONTAINER_NAME ?= tuts
 # List of targets the `readme` target should call before generating the readme
 export README_DEPS ?= docs/targets.md
 
--include $(shell curl -sSL -o .build-harness "https://git.io/build-harness"; echo .build-harness)
+-include $(shell curl -sSL -o .build-harness "https://cloudposse.tools/build-harness"; echo .build-harness)
 
 ## Initialize build-harness, install deps, build docker container, install wrapper script and run shell
 all: init deps build run
