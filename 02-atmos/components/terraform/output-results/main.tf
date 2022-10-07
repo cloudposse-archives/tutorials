@@ -24,9 +24,11 @@ locals {
   users_location = data.terraform_remote_state.location.outputs.users_location
 
   weather_data        = data.terraform_remote_state.weather.outputs.weather_data
-  weather_date        = local.weather_data.applicable_date
-  weather_temp        = local.weather_data.the_temp
-  weather_description = local.weather_data.weather_state_name
+  weather_start_time  = local.weather_data.startTime
+  weather_end_time    = local.weather_data.endTime
+  weather_temp        = local.weather_data.temperature
+  weather_temp_unit   = local.weather_data.temperatureUnit
+  weather_description = local.weather_data.shortForecast
 }
 
 data "template_file" "weather_report" {
@@ -34,8 +36,10 @@ data "template_file" "weather_report" {
   vars = {
     users_location      = local.users_location
     weather_temp        = local.weather_temp
+    weather_temp_unit   = local.weather_temp_unit
     weather_description = local.weather_description
-    weather_date        = local.weather_date
+    weather_start_time  = local.weather_start_time
+    weather_end_time    = local.weather_end_time
   }
 }
 
@@ -60,7 +64,7 @@ output "weather_description" {
 }
 
 output "weather_date" {
-  value = local.weather_date
+  value = "${local.weather_start_time} through ${local.weather_end_time}"
 }
 
 output "weather_report" {

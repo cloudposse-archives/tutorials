@@ -1,6 +1,7 @@
 ARG VERSION=latest
 ARG OS=debian
 ARG CLI_NAME=tutorials
+ARG TF_1_VERSION=1.3.0
 
 FROM cloudposse/geodesic:$VERSION-$OS
 
@@ -13,10 +14,11 @@ RUN apt-get install -y software-properties-common && \
     apt-get install -y golang-petname
 
 
+ARG TF_1_VERSION
 # Install terraform.
-RUN apt-get update && apt-get install -y -u terraform-0.14
-# Set Terraform 0.14.x as the default `terraform`.
-RUN update-alternatives --set terraform /usr/share/terraform/0.14/bin/terraform
+RUN apt-get update && apt-get install -y -u --allow-downgrades \
+    terraform-1="${TF_1_VERSION}-*" && \
+    update-alternatives --set terraform /usr/share/terraform/1/bin/terraform
 
 # Install Atmos
 RUN apt-get install -y --allow-downgrades \
