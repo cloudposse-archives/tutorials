@@ -15,15 +15,15 @@ data "terraform_remote_state" "location" {
 locals {
   # Pulls Longitude and Latitude from the Remote State of fetch-location
   users_location_map = data.terraform_remote_state.location.outputs.users_location_map
-  lat = local.users_location_map.lat
-  lon = local.users_location_map.lon
+  lat                = local.users_location_map.lat
+  lon                = local.users_location_map.lon
 
   # Curls Weather API for Location Data
-  location_url = "https://api.weather.gov/points/${local.lat},${local.lon}"
+  location_url  = "https://api.weather.gov/points/${local.lat},${local.lon}"
   location_data = jsondecode(data.http.fetch_location.body).properties
 
   # Curls Weather API for Forecast Data
-  weather_url = (var.hourly_forecast) ? local.location_data.forecastHourly : local.location_data.forecast
+  weather_url  = (var.hourly_forecast) ? local.location_data.forecastHourly : local.location_data.forecast
   weather_data = jsondecode(data.http.fetch_weather.body).properties.periods[0]
 }
 
