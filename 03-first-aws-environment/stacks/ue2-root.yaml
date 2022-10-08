@@ -11,7 +11,7 @@ components:
           workspace_key_prefix: "tfstate-backend"
       vars:
         name: tfstate
-        attributes: ["logical-condor"]
+        attributes: [TODO]
         force_destroy: false
         prevent_unencrypted_uploads: true
         enable_server_side_encryption: true

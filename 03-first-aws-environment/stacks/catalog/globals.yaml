@@ -5,8 +5,8 @@ terraform:
   backend:
     s3:
       encrypt: true
-      bucket: "acme-ue2-tfstate-logical-condor"
+      bucket: "acme-ue2-tfstate-TODO"
       key: "terraform.tfstate"
-      dynamodb_table: "acme-ue2-tfstate-lock-logical-condor"
+      dynamodb_table: "acme-ue2-tfstate-lock-TODO"
       acl: "bucket-owner-full-control"
       region: "us-east-2"

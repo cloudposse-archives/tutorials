@@ -7,4 +7,4 @@ components:
   terraform:
     static-site:
       vars:
-        attributes: ["logical-condor"]
+        attributes: [TODO]
