@@ -1,11 +1,11 @@
-data "http" "cat_facts" {
-  url = "https://catfact.ninja/fact"
+data "http" "star_wars" {
+  url = "https://swapi.dev/api/people/1"
   request_headers = {
     Accept = "application/json"
   }
 }
 
-output "cat_facts_data" {
-  value       = jsondecode(data.http.cat_facts.body)
-  description = "Cat Fact data that we output as part of this simple example project"
+output "star_wars_data" {
+  value       = jsondecode(data.http.star_wars.body)
+  description = "Star wars data that we output as part of this simple example project"
 }
