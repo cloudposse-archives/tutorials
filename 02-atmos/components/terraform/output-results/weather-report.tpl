@@ -1,7 +1,7 @@
 === Your Weather Report ===
 ============================
 Location:    ${users_location}
-Temperature: ${weather_temp}°
+Temperature: ${weather_temp}°${weather_temp_unit}
 Weather:     ${weather_description}
-Date:        ${weather_date}
+Time:        ${weather_start_time} to ${weather_end_time}
 ============================
