@@ -1,6 +1,6 @@
 module "cdn" {
   source  = "cloudposse/cloudfront-s3-cdn/aws"
-  version = "0.59.0"
+  version = "0.83.0"
 
   name            = "static-site"
   website_enabled = true
