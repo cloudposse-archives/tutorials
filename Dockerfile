@@ -2,6 +2,7 @@ ARG VERSION=latest
 ARG OS=debian
 ARG CLI_NAME=tutorials
 ARG TF_1_VERSION=1.3.0
+ARG ATMOS_VERSION=1.4.20
 
 FROM cloudposse/geodesic:$VERSION-$OS
 
@@ -21,8 +22,9 @@ RUN apt-get update && apt-get install -y -u --allow-downgrades \
     update-alternatives --set terraform /usr/share/terraform/1/bin/terraform
 
 # Install Atmos
+ARG ATMOS_VERSION
 RUN apt-get install -y --allow-downgrades \
-    atmos \
+    atmos="${ATMOS_VERSION}-*" \
     vendir
 
 # Geodesic message of the Day
