@@ -1,5 +1,6 @@
 import: []
-vars: {}
+vars:
+  stage: example
 
 terraform:
   vars: {}
