@@ -1,0 +1,7 @@
+workflows:
+  deploy-all:
+    description: Deploy terraform projects in order
+    steps:
+      - job: terraform deploy fetch-location
+      - job: terraform deploy fetch-weather
+      - job: terraform deploy output-results
