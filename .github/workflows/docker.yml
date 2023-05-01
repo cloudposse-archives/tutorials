@@ -33,7 +33,7 @@ jobs:
           fi
 
           printf "Tagging with %s\n" "${TAGS}"
-          echo "::set-output name=tags::${TAGS}"
+          echo "tags=${TAGS}" >> $GITHUB_OUTPUT
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Login to DockerHub
