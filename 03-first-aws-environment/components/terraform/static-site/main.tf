@@ -1,9 +1,10 @@
 module "cdn" {
   source  = "cloudposse/cloudfront-s3-cdn/aws"
-  version = "0.83.0"
+  version = "0.90.0"
 
-  name            = "static-site"
-  website_enabled = true
+  name                              = "static-site"
+  website_enabled                   = true
+  cloudfront_access_logging_enabled = false
 
   context = module.this.context
 }
