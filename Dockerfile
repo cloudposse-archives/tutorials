@@ -4,6 +4,7 @@ ARG CLI_NAME=tutorials
 ARG TF_1_VERSION=1.3.0
 ARG ATMOS_VERSION=1.16.0
 
+
 FROM cloudposse/geodesic:$VERSION-$OS
 
 # Install ubuntu universe repo so we can install more helpful packages
