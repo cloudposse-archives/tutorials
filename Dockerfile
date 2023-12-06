@@ -1,19 +1,10 @@
 ARG VERSION=latest
 ARG OS=debian
 ARG CLI_NAME=tutorials
-ARG TF_1_VERSION=1.3.0
-ARG ATMOS_VERSION=1.16.0
+ARG TF_1_VERSION=1.3.10
+ARG ATMOS_VERSION=1.50.0
 
 FROM cloudposse/geodesic:$VERSION-$OS
-
-# Install ubuntu universe repo so we can install more helpful packages
-RUN apt-get install -y software-properties-common && \
-    add-apt-repository "deb http://archive.ubuntu.com/ubuntu bionic universe" && \
-    gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv 3B4FE6ACC0B21F32 && \
-    gpg --export --armor 3B4FE6ACC0B21F32 | apt-key add - && \
-    apt-get update && \
-    apt-get install -y golang-petname
-
 
 ARG TF_1_VERSION
 # Install terraform.
