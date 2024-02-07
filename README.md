@@ -27,7 +27,7 @@
 
 -->
 
-The tutorial code examples for usage with [docs.cloudposse.com/tutorials](https://docs.cloudposse.com/tutorials/).
+The tutorial code examples for usage with [docs.cloudposse.com/category/tutorials](https://docs.cloudposse.com/category/tutorials/).
 
 
 ---
